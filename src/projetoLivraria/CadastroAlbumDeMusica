@@ -1,0 +1,59 @@
+package projetoLivraria;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import static projetoLivraria.Principal.contId;
+
+public class CadastroAlbumDeMusica {
+
+    private static Scanner scanner;
+    private List<AlbumDeMusica> listaDeAlbumDeMusica = new ArrayList<>();
+    public static Integer contID = 0;
+    Scanner sc = new Scanner(System.in);
+
+    public static void cadastrarAlbumDeMusica() {
+    }
+
+    public List<AlbumDeMusica> getListaDeAlbumDeMusica() {
+        return listaDeAlbumDeMusica;
+    }
+
+
+    public static AlbumDeMusica cadastrarAlbumDeMusica(Scanner sc) {
+        AlbumDeMusica albumDeMusica = new AlbumDeMusica();
+
+        albumDeMusica.setId(contId + 1);
+        contId = contId + 1;
+
+        System.out.println("Qual o nome da música que deseja cadastrar?");
+        sc.nextLine();
+        albumDeMusica.setNome(scanner.nextLine());
+        System.out.println("Qual preço da música que deseja cadastrar?");
+        albumDeMusica.setPreco(scanner.nextDouble());
+        System.out.println("Quais os músicos da banda que deseja cadastrar?");
+        sc.nextLine();
+        albumDeMusica.setMusicosBanda(scanner.nextLine());
+        System.out.println("Qual o genero musical que deseja cadastrar?");
+        albumDeMusica.setGenero(scanner.nextLine());
+        System.out.println("Qual o selo da música que deseja cadastrar?");
+        albumDeMusica.setSelo(scanner.nextLine());
+
+        return albumDeMusica;
+
+    }
+
+    public void adicionarAlbumDeMusica(AlbumDeMusica cp) {
+        AlbumDeMusica.add(cp);
+    }
+
+
+    public void listarAlbumDeMusica() {
+        listaDeAlbumDeMusica.forEach((p) -> {
+            System.out.print("Nome do Album: " + p.getNome());
+            System.out.print("/ID: " + p.getId());
+            System.out.print("/Preco: " + p.getPreco());
+            System.out.println("");
+        });
+    }
+}
